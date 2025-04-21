@@ -12,6 +12,9 @@ pub struct PaymentVault {
     // Flag to indicate if the total amount was paid
     pub is_finalized: bool,
 
+    // Flag to indicate if the payment is cancelled
+    pub is_cancelled: bool,
+
     // Bump from the PDA generation
     pub bump: u8,
 

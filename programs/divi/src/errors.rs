@@ -36,4 +36,14 @@ pub enum DiviError {
     VaultIsNotFinalized,
     #[msg("An error occurred while getting participant from vault")]
     ParticipantAccountNotProvided,
+    #[msg("The payment has already finalized")]
+    PaymentAlreadyFinalized,
+    #[msg("Payment id is invalid")]
+    InvalidPaymentId,
+    #[msg("Participant is invalid")]
+    InvalidParticipant,
+    #[msg("Participant vault is invalid")]
+    InvalidParticipantVault,
+    #[msg("All participant are not refunded")]
+    NotAllParticipantsRefunded,
 }

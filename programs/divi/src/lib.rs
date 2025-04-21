@@ -7,6 +7,7 @@ pub mod errors;
 pub mod events;
 pub mod instructions;
 pub mod states;
+pub mod utils;
 
 use instructions::*;
 
@@ -42,5 +43,41 @@ pub mod divi {
     /// - `payment_id` - Unique payment ID to find vault PDA
     pub fn close_vault(ctx: Context<CloseVault>, payment_id: u32) -> Result<()> {
         return instructions::close_vault::handler(ctx, payment_id);
+    }
+
+    /// Participate to payment with vault
+    ///
+    /// ### Parameters
+    /// - `payment_id` - Unique payment ID to find vault PDA
+    pub fn participate(
+        ctx: Context<CreateParticipantVault>,
+        payment_id: u32,
+        amount: u64,
+    ) -> Result<()> {
+        return instructions::create_participant_vault::handler(ctx, payment_id, amount);
+    }
+
+    /// Close the vault and transfert the lamports to the issuer
+    ///
+    /// ### Parameters
+    /// - `payment_id` - Unique payment ID to find vault PDA
+    pub fn cancel_payment(ctx: Context<CancelPayment>, payment_id: u32) -> Result<()> {
+        return instructions::cancel_payment::handler(ctx, payment_id);
+    }
+
+    /// Close the vault and transfert the lamports to the issuer
+    ///
+    /// ### Parameters
+    /// - `payment_id` - Unique payment ID to find vault PDA
+    pub fn close_payment_vault(ctx: Context<ClosePaymentVault>, payment_id: u32) -> Result<()> {
+        return instructions::close_payment_vault::handler(ctx, payment_id);
+    }
+
+    /// Refund a payer participant
+    ///
+    /// ### Parameters
+    /// - `payment_id` - Unique payment ID to find vault PDA
+    pub fn refund_participant(ctx: Context<RefundParticipant>, payment_id: u32) -> Result<()> {
+        return instructions::refund_participant::handler(ctx, payment_id);
     }
 }

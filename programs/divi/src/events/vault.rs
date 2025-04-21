@@ -21,3 +21,18 @@ pub struct VaultCompleted {
     pub payment_id: u32,
     pub bump: u8,
 }
+
+#[event]
+pub struct VaultCancelled {
+    pub issuer: Pubkey,
+    pub payment_id: u32,
+    pub bump: u8,
+}
+
+#[event]
+pub struct ParticipantRefunded {
+    pub issuer: Pubkey,
+    pub payment_id: u32,
+    pub bump: u8,
+    pub participant: Pubkey,
+}
